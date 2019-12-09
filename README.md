@@ -1,2 +1,2 @@
 # khaos
-Khaos' an Higly Advanced Operating System
+Khaos' an Highly Advanced Operating System
