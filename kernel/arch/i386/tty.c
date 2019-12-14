@@ -40,10 +40,22 @@ void terminal_putentryat(unsigned char c, uint8_t color, size_t x, size_t y) {
 
 void terminal_putchar(char c) {
 	unsigned char uc = c;
-	terminal_putentryat(uc, terminal_color, terminal_column, terminal_row);
-	if (++terminal_column == VGA_WIDTH) {
+	switch (uc) {
+	case '\n':
 		terminal_column = 0;
-		if (++terminal_row == VGA_HEIGHT)
+		terminal_row++;
+		break;
+
+	default:
+		terminal_putentryat(uc, terminal_color, terminal_column, terminal_row);
+		terminal_column++;
+	}
+
+	if (terminal_column == VGA_WIDTH) {
+		terminal_column = 0;
+		terminal_row++;
+
+		if (terminal_row == VGA_HEIGHT)
 			terminal_row = 0;
 	}
 }
