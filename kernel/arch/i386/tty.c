@@ -56,7 +56,7 @@ void terminal_putchar(char c) {
 	switch (uc) {
 	case '\n':
 		term_x = 0;
-		if (term_y < VGA_HEIGHT)
+		if (term_y < (VGA_HEIGHT - 1))
 			term_y++;
 		else
 			terminal_scroll_down();
