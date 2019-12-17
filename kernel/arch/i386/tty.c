@@ -71,6 +71,8 @@ void terminal_putchar(char c) {
 	if (term_x == VGA_WIDTH) {
 		if (term_y == VGA_HEIGHT - 1) {
 			terminal_scroll_down();
+		} else {
+			term_y++;
 		}
 		term_x = 0;
 	}
