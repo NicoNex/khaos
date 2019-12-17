@@ -68,8 +68,12 @@ void terminal_putchar(char c) {
 		break;
 	}
 
-	if (term_x == VGA_WIDTH)
+	if (term_x == VGA_WIDTH) {
+		if (term_y == VGA_HEIGHT - 1) {
+			terminal_scroll_down();
+		}
 		term_x = 0;
+	}
 }
 
 void terminal_write(const char* data, size_t size) {
